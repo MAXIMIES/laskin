@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BinaryTree.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Laskin&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">laskin</a> &gt; <span class="el_source">BinaryTree.java</span></div><h1>BinaryTree.java</h1><pre class="source lang-java linenums">/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package laskin;
+
+/**
+ *
+ * @author kamaj
+ */
+public class BinaryTree {
+
+    private Node root;
+    public static BinaryTree found; // findWithPreOrder()-operaation apurakenne
+
+<span class="nc" id="L17">    public BinaryTree(String rootValue) {</span>
+<span class="nc" id="L18">        root = new Node(rootValue);</span>
+<span class="nc" id="L19">    }</span>
+
+    /*public BinaryTree(String rootValue, BinaryTree left, BinaryTree right){
+        root = new Node(rootValue, left, right);
+    } */
+
+    public void preOrder() {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (root != null) {</span>
+<span class="nc" id="L27">            System.out.println(root.getData()+',');</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if (root.left() != null) // pääseeekö vasemmalle?</span>
+<span class="nc" id="L29">                root.left().preOrder();</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            if (root.right() != null) // pääseekö oikealle?</span>
+<span class="nc" id="L31">                root.right().preOrder();</span>
+        }
+
+<span class="nc" id="L34">    }</span>
+
+    // löydetty alipuu asetetaan staattiseen muuttujaan found
+    public void findWithPreOrder() {
+
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (root != null) {</span>
+<span class="nc" id="L40">            System.out.print(root.getData()+ &quot;: muokkaatko tätä?&quot;);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            if (root.left()== null)</span>
+<span class="nc" id="L42">                System.out.print(&quot; (vasemmalla tilaa)&quot;);</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if (root.right() == null)</span>
+<span class="nc" id="L44">                System.out.println(&quot; (oikealla tilaa)&quot;);</span>
+<span class="nc" id="L45">            char select = 'k';</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">            if (select =='k') {</span>
+<span class="nc" id="L47">                found = this;</span>
+<span class="nc" id="L48">                return;</span>
+            }
+<span class="nc bnc" id="L50" title="All 4 branches missed.">            if (found==null &amp;&amp; root.left() != null) // pääseekö vasemmalle?</span>
+<span class="nc" id="L51">                root.left().findWithPreOrder();</span>
+<span class="nc bnc" id="L52" title="All 4 branches missed.">            if (found== null &amp;&amp; root.right() != null) // pääseekö oikealle?</span>
+<span class="nc" id="L53">                root.right().findWithPreOrder();</span>
+        }
+
+<span class="nc" id="L56">    }</span>
+    public void setNotFound() {
+<span class="nc" id="L58">        found = null;</span>
+<span class="nc" id="L59">    }</span>
+    public static BinaryTree getFound() {
+<span class="nc" id="L61">        return found;</span>
+    }
+
+    public void setLeft(BinaryTree tree) {
+<span class="nc" id="L65">        root.setLeft(tree);</span>
+<span class="nc" id="L66">    }</span>
+
+    public void setRight(BinaryTree tree) {
+<span class="nc" id="L69">        root.setRight(tree);</span>
+<span class="nc" id="L70">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
